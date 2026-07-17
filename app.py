@@ -189,7 +189,7 @@ st.markdown(f"""
 # Trigger Recommendation Engine calculation
 st.markdown("<div style='text-align: center; margin: 25px 0;'>", unsafe_allow_html=True) # <-- FIXED HERE
 trigger_recommendations = st.button("✨ Discover Similar Track Vibes")
-st.markdown("</div>", unsafe_allowed_html=True if False else None) # Cleaned up empty block
+st.markdown("</div>", unsafe_allow_html=True if False else None) # Cleaned up empty block
 
 st.markdown("---")
 
