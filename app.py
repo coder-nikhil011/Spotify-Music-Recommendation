@@ -95,7 +95,7 @@ st.markdown("""
         box-shadow: 0 0 15px rgba(29, 185, 84, 0.4);
     }
     </style>
-""", unsafe_allowed_html=True)
+""", unsafe_allow_html=True) # <-- FIXED HERE
 
 # 2. Dataset Core Loader Logic
 acoustic_features = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo']
@@ -118,7 +118,7 @@ def load_and_clean_data():
 spotify_df = load_and_clean_data()
 
 # 3. Sidebar Configuration 
-st.sidebar.markdown("<h2 style='color:#1DB954; margin-bottom:0;'>💚 VibeStream</h2>", unsafe_allowed_html=True)
+st.sidebar.markdown("<h2 style='color:#1DB954; margin-bottom:0;'>💚 VibeStream</h2>", unsafe_allow_html=True) # <-- FIXED HERE
 st.sidebar.write("Personalized Contextual Stream AI")
 st.sidebar.markdown("---")
 
@@ -149,7 +149,7 @@ artist_key = 'track_artist' if 'track_artist' in spotify_df.columns else None
 genre_key = 'playlist_genre' if 'playlist_genre' in spotify_df.columns else None
 
 # 4. Main App Interface
-st.markdown("<h1 style='letter-spacing: -1px; margin-bottom: 5px;'>Now Playing Experience</h1>", unsafe_allowed_html=True)
+st.markdown("<h1 style='letter-spacing: -1px; margin-bottom: 5px;'>Now Playing Experience</h1>", unsafe_allow_html=True) # <-- FIXED HERE
 
 unique_tracks_list = sorted(spotify_df[name_key].unique())
 selected_track = st.selectbox("🎯 Pick a song to establish the vibe context:", unique_tracks_list)
@@ -184,18 +184,18 @@ st.markdown(f"""
             <span style='font-size: 13px; color: #1DB954; font-weight: bold; margin-left: 15px;'>128KBPS // ACU-RECON ENGINE ACTIVE</span>
         </div>
     </div>
-""", unsafe_allowed_html=True)
+""", unsafe_allow_html=True) # <-- FIXED HERE
 
 # Trigger Recommendation Engine calculation
-st.markdown("<div style='text-align: center; margin: 25px 0;'>", unsafe_allowed_html=True)
+st.markdown("<div style='text-align: center; margin: 25px 0;'>", unsafe_allow_html=True) # <-- FIXED HERE
 trigger_recommendations = st.button("✨ Discover Similar Track Vibes")
-st.markdown("</div>", unsafe_allowed_html=True)
+st.markdown("</div>", unsafe_allowed_html=True if False else None) # Cleaned up empty block
 
 st.markdown("---")
 
 # 5. Recommendation Outputs Display Engine
 if trigger_recommendations:
-    st.markdown("<h3 style='font-size: 22px; font-weight: 700; margin-bottom: 15px;'>Up Next: AI Recommended Queue</h3>", unsafe_allowed_html=True)
+    st.markdown("<h3 style='font-size: 22px; font-weight: 700; margin-bottom: 15px;'>Up Next: AI Recommended Queue</h3>", unsafe_allow_html=True) # <-- FIXED HERE
     
     # Structural Live Vector Calculation Routine
     norm_cols = [f'norm_{f}' for f in acoustic_features if f'norm_{f}' in spotify_df.columns]
@@ -227,6 +227,6 @@ if trigger_recommendations:
                     </span>
                 </div>
             </div>
-        """, unsafe_allowed_html=True)
+        """, unsafe_allow_html=True) # <-- FIXED HERE
 else:
     st.info("💡 Click on the 'Discover Similar Track Vibes' button above to generate a smart AI queue matching this dynamic profile.")
